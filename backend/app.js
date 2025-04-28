@@ -1,3 +1,5 @@
+import jobReportRouter from "./routes/jobReportRouter.js";
+
 import express from "express";
 import { config } from "dotenv";
 import cors from "cors";
@@ -39,6 +41,8 @@ app.use(fileUpload({
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobRouter);
 app.use("/api/v1/application", applicationRouter);
+
+app.use("/api/v1/job", jobReportRouter);
 
 newsLetterCron();
 

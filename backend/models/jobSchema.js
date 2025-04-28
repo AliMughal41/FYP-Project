@@ -62,7 +62,12 @@ import mongoose from "mongoose";
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
-    }
+    },
+    isReported: {
+        type: Boolean,
+        default: false,
+    },
+    
  });
 
  export const Job = mongoose.model("Job", jobSchema);
