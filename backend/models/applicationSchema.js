@@ -27,6 +27,11 @@ resume: {
     public_id: String,
     url: String
 },
+status: {
+    type: String,
+    enum: ["Under Review", "Shortlisted", "Rejected"],
+    default: "Under Review",
+},
 coverLetter:{
     type: String,
     required: true

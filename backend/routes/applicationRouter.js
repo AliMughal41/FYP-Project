@@ -1,3 +1,4 @@
+import { updateApplicationStatus } from "../controllers/applicationController.js";
 import express from "express";
 import{isAuthenticated, isAuthorized} from "../middlewares/auth.js";
 import { deleteApplication, 
@@ -8,6 +9,16 @@ import { deleteApplication,
 
 
 const router = express.Router();
+
+// Update Application Status
+router.put(
+  "/update-status/:applicationId",
+  isAuthenticated,
+  isAuthorized("Employer", "Admin"),  // Only Employer/Admin can update status
+  updateApplicationStatus
+);
+
+
 
 router.post(
     "/post/:id",

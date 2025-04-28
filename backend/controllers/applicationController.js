@@ -1,3 +1,6 @@
+
+
+
 import { catchAsyncErrors } from "../middlewares/catchAsyncErrors.js";
 import ErrorHandler from "../middlewares/error.js";
 import { Application } from "../models/applicationSchema.js";
@@ -134,4 +137,25 @@ export const deleteApplication = catchAsyncErrors(async (req, res, next)=>{
             success: true,
             message: "Application Deleted."
         });
+});
+
+
+// Update application status
+export const updateApplicationStatus = catchAsyncErrors(async (req, res, next) => {
+    const { applicationId } = req.params;
+    const { status } = req.body; // "Shortlisted", "Rejected", "Under Review"
+
+    const application = await Application.findById(applicationId);
+    if (!application) {
+        return next(new ErrorHandler("Application not found", 404));
+    }
+
+    application.status = status;
+    await application.save();
+
+    res.status(200).json({
+        success: true,
+        message: `Application status updated to ${status}`,
+        application,
+    });
 });
