@@ -1,4 +1,5 @@
 import jobReportRouter from "./routes/jobReportRouter.js";
+import chatRouter from "./routes/chatRouter.js";
 
 import express from "express";
 import { config } from "dotenv";
@@ -31,6 +32,8 @@ app.use(
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use("/api/v1/chat", chatRouter);
+
 
 app.use(fileUpload({
     useTempFiles: true,
