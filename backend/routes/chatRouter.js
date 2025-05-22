@@ -1,6 +1,6 @@
 // chatRouter.js
 import express from "express";
-import { saveMessage, getChatMessages } from "../controllers/chatController.js"; // Correct import
+import { saveMessage, getChatMessages } from "../controllers/chatController.js"; 
 
 const router = express.Router();
 

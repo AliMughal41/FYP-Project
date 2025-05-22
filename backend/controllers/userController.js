@@ -192,7 +192,7 @@ sendToken(user, 200, res, "Password updated successfully");
 });
 
 
-// ——— NEW: Forgot Password ———
+
 export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
     const { email } = req.body;
     if (!email) return next(new ErrorHandler("Please provide your email address.", 400));
@@ -223,7 +223,7 @@ export const forgotPassword = catchAsyncErrors(async (req, res, next) => {
     }
   });
   
-  // ——— NEW: Reset Password ———
+  
   export const resetPassword = catchAsyncErrors(async (req, res, next) => {
     const resetPasswordToken = crypto
       .createHash("sha256")
